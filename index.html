@@ -6,19 +6,22 @@
 <title>Naadham &amp; Rishi — A Sacred Beginning</title>
 <meta name="description" content="Join us as Naadham and Rishi begin their forever. A sacred celebration of two souls destined to become one.">
 
-<!-- Open Graph / Facebook -->
+<!-- Open Graph / Facebook / WhatsApp -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="">
+<meta property="og:url" content="https://yourdomain.com/">
 <meta property="og:title" content="Naadham & Rishi — A Sacred Beginning">
 <meta property="og:description" content="Join us as we begin our forever. A sacred celebration of two souls destined to become one.">
-<meta property="og:image" content="assets/images/og-image.png">
+<meta property="og:image" content="https://yourdomain.com/assets/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Naadham and Rishi Wedding Invitation">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="">
+<meta property="twitter:url" content="https://yourdomain.com/">
 <meta property="twitter:title" content="Naadham & Rishi — A Sacred Beginning">
 <meta property="twitter:description" content="Join us as we begin our forever. A sacred celebration of two souls destined to become one.">
-<meta property="twitter:image" content="assets/images/og-image.png">
+<meta property="twitter:image" content="https://yourdomain.com/assets/images/og-image.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600;700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
@@ -134,8 +137,9 @@ p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.7;color:r
   font-family:var(--display);font-size:clamp(.72rem,.85vw,.82rem);letter-spacing:.26em;text-transform:uppercase;
   color:var(--ivory);background:transparent;border:1px solid var(--glass-brd);
   padding:clamp(.95rem,1.2vw,1.1rem) clamp(2rem,2.8vw,2.6rem);border-radius:2px;cursor:pointer;overflow:hidden;
-  transition:letter-spacing .4s,color .4s,border-color .4s;
+  transition:letter-spacing .4s,color .4s,border-color .4s,transform .2s;
   text-decoration:none;
+  min-height:44px;min-width:120px;
 }
 .btn::before{
   content:'';position:absolute;inset:0;background:linear-gradient(120deg,var(--deep-gold),var(--champagne),var(--gold));
@@ -143,9 +147,11 @@ p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.7;color:r
 }
 .btn:hover{color:var(--ink);letter-spacing:.32em;border-color:var(--gold);}
 .btn:hover::before{transform:translateX(0);}
+.btn:active{transform:scale(0.96);transition:transform .1s;}
 .btn:focus{outline:2px solid var(--gold);outline-offset:4px;}
 .btn:focus:not(:focus-visible){outline:none;}
 .btn:focus-visible{outline:2px solid var(--gold);outline-offset:4px;}
+@media(hover:none){.btn:active{background:rgba(217,184,119,.15);}}
 
 /* ---------- ornamental frame ---------- */
 .om{font-size:clamp(1.4rem,2vw,1.8rem);color:var(--champagne);opacity:.85;margin-bottom:.6rem;display:block;}
@@ -230,6 +236,8 @@ p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.7;color:r
 .contact-block{margin-top:1rem;padding-top:.9rem;border-top:1px solid rgba(217,184,119,.22);}
 .contact-label{font-size:clamp(.65rem,.8vw,.7rem);letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-family:var(--display);display:block;margin-bottom:.35rem;}
 .contact-text{font-size:clamp(.92rem,1.05vw,.98rem);color:rgba(245,239,226,.8);line-height:1.6;}
+.contact-text a{color:rgba(245,239,226,.8);text-decoration:none;transition:color .3s;}
+.contact-text a:hover{color:var(--champagne);}
 
 /* ---------- story chapters ---------- */
 .chapters{display:flex;flex-direction:column;gap:5rem;margin-top:3rem;text-align:left;}
@@ -250,8 +258,11 @@ p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.7;color:r
 .lotus-wrap:hover .lotus-image{transform:scale(1.04);}
 .lotus-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;opacity:0;transition:opacity .8s ease;pointer-events:none;}
 .lotus-video.show{opacity:1;}
-.lotus-reveal-text{opacity:0;transition:opacity 1s ease .3s;margin-top:2rem;}
+.lotus-reveal-text{opacity:0;transition:opacity 1s ease .3s;margin-top:2.5rem;text-align:center;}
 .lotus-reveal-text.show{opacity:1;}
+.lotus-reveal-text .eyebrow{margin-bottom:.8rem;}
+.lotus-reveal-text h2{margin-bottom:.6rem;}
+.lotus-reveal-text p{margin-top:.5rem;}
 .lotus-hint{font-size:clamp(.78rem,.95vw,.88rem);letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:1.2rem;opacity:.85;}
 .lotus-tap-hint{position:absolute;bottom:-3rem;left:50%;transform:translateX(-50%);font-size:clamp(.75rem,.9vw,.85rem);letter-spacing:.24em;text-transform:uppercase;color:var(--champagne);opacity:.85;animation:tapPulse 2s ease-in-out infinite;display:flex;align-items:center;gap:.5rem;pointer-events:none;}
 .lotus-tap-hint svg{width:18px;height:18px;animation:tapBounce 2s ease-in-out infinite;}
@@ -301,7 +312,7 @@ p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.7;color:r
 }
 .celeb-card.in-view{opacity:1;transform:translateY(0);}
 .celeb-card.glow{box-shadow:0 0 34px 4px rgba(201,162,74,.32);border-color:var(--gold);}
-.celeb-media{position:relative;aspect-ratio:9/16;max-height:340px;overflow:hidden;background:var(--bronze);}
+.celeb-media{position:relative;aspect-ratio:9/16;max-height:340px;overflow:hidden;background:var(--bronze);cursor:pointer;}
 .celeb-media video,.celeb-media .celeb-poster{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   transition:transform .6s cubic-bezier(.16,.8,.24,1), filter .6s ease;
@@ -312,16 +323,8 @@ p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.7;color:r
   content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(20,14,8,0) 55%,rgba(20,14,8,.65) 100%);
 }
-.celeb-play{
-  position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:46px;height:46px;border-radius:50%;border:1px solid rgba(245,239,226,.55);
-  background:rgba(20,14,8,.4);backdrop-filter:blur(3px);
-  display:flex;align-items:center;justify-content:center;color:var(--ivory);
-  opacity:0;transition:opacity .35s ease;cursor:pointer;
-}
-.celeb-media:hover .celeb-play{opacity:.9;}
-@media(hover:none){.celeb-play{opacity:.75;}}
-.celeb-play svg{width:16px;height:16px;margin-left:2px;}
+/* Play button removed for cleaner look */
+.celeb-video-badge{position:absolute;bottom:12px;right:12px;z-index:2;background:rgba(20,14,8,.7);backdrop-filter:blur(4px);padding:.35rem .7rem;border-radius:4px;font-size:.7rem;letter-spacing:.05em;color:var(--champagne);pointer-events:none;}
 @media(hover:hover){
   .celeb-card:hover .celeb-media video,.celeb-card:hover .celeb-media .celeb-poster{transform:scale(1.02);filter:brightness(1.06);}
   .celeb-card:hover{box-shadow:0 20px 44px rgba(0,0,0,.4);border-color:var(--gold);}
@@ -344,7 +347,6 @@ p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.7;color:r
   .celeb-card{opacity:1;transform:none;transition:none;}
   .celeb-card.glow{box-shadow:none;}
   .celeb-media video,.celeb-media .celeb-poster{transition:none;}
-  .celeb-play{opacity:.9;}
 }
 
 /* ---------- celebration fullscreen modal ---------- */
@@ -514,6 +516,18 @@ p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.7;color:r
 .skip-link{position:absolute;top:-40px;left:0;background:var(--gold);color:var(--ink);padding:8px 12px;z-index:9999;text-decoration:none;}
 .skip-link:focus{top:0;}
 
+/* ---------- back to top button ---------- */
+#back-to-top{position:fixed;bottom:90px;right:24px;z-index:50;width:46px;height:46px;border-radius:50%;border:1px solid var(--glass-brd);background:rgba(20,14,8,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--champagne);opacity:0;visibility:hidden;transform:translateY(20px);transition:opacity .3s,visibility .3s,transform .3s,box-shadow .3s;}
+#back-to-top.show{opacity:1;visibility:visible;transform:translateY(0);}
+#back-to-top:hover{box-shadow:0 0 20px rgba(217,184,119,.5);transform:translateY(-4px);}
+#back-to-top svg{width:20px;height:20px;}
+
+/* ---------- micro animations ---------- */
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+@keyframes glow{0%,100%{filter:drop-shadow(0 0 8px rgba(217,184,119,.3));}50%{filter:drop-shadow(0 0 16px rgba(217,184,119,.6));}}
+.om{animation:float 4s ease-in-out infinite;}
+.divider svg{animation:float 3s ease-in-out infinite;}
+
 /* ---------- hero mobile enhancements ---------- */
 @media(max-width:600px){
   #gate .content{padding:0 5vw;}
@@ -590,6 +604,11 @@ p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.7;color:r
 
 <button id="music-toggle" aria-label="Toggle music">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+</button>
+<button id="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
 </button>
 <audio id="bg-audio" loop preload="auto" src="vidssave.com Mahadev theme music LOW.mp4"></audio>
 
@@ -873,11 +892,11 @@ p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.7;color:r
       </div>
     </div>
     <div class="lotus-reveal-text" id="lotus-text">
-      <div class="eyebrow" style="color:var(--gold);">Save The Date</div>
-      <h2 class="display-md">Friday, 04 September 2026</h2>
-      <p style="margin-top:.4rem;">12:02 PM – 12:20 PM &nbsp;·&nbsp; The Divine Muhurtham</p>
-      <p class="script" style="font-size:1.5rem;margin-top:1rem;">The stars aligned. Our forever begins.</p>
-      <button class="btn continue-btn" id="sacred-continue">Continue</button>
+      <div class="eyebrow" style="color:var(--gold);margin-bottom:.8rem;">Save The Date</div>
+      <h2 class="display-md" style="margin-bottom:.6rem;">Friday, 04 September 2026</h2>
+      <p style="margin-top:.5rem;font-size:clamp(1rem,1.4vw,1.2rem);">12:02 PM – 12:20 PM &nbsp;·&nbsp; The Divine Muhurtham</p>
+      <p class="script" style="font-size:clamp(1.3rem,2vw,1.6rem);margin-top:1.2rem;color:var(--champagne);">The stars aligned. Our forever begins.</p>
+      <button class="btn continue-btn" id="sacred-continue" style="margin-top:2rem;">Continue</button>
     </div>
   </div>
 </section>
@@ -1030,10 +1049,10 @@ p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.7;color:r
   <div class="bg-fade dark"></div>
   <div class="content footer-content" style="max-width:600px;">
     <span class="om reveal">ॐ</span>
-    <span class="eyebrow reveal reveal-delay-1">Thank You</span>
-    <div class="script script-lg reveal reveal-delay-2">Naadham &amp; Rishi</div>
+    <span class="eyebrow reveal reveal-delay-1">Thank You</span><br>
+    <div class="script script-lg reveal reveal-delay-2">Naadham &amp; Rishi</div><br>
     <h2 class="display-md reveal reveal-delay-3">For Being Part Of Our Sacred Beginning</h2>
-    <p class="reveal reveal-delay-4" style="margin-top:1rem;">Your love, support and blessings have shaped our journey. May Mahadev &amp; Parvati bless you and your family with health, happiness and endless joy.</p>
+    <!-- <p class="reveal reveal-delay-4" style="margin-top:1rem;">Your love, support and blessings have shaped our journey. May Mahadev &amp; Parvati bless you and your family with health, happiness and endless joy.</p> -->
     <div class="icon-row reveal reveal-delay-4">
       <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M20 8.5c0-2.5-2-4.5-4.5-4.5-1.5 0-2.8.7-3.5 1.9C11.3 4.7 10 4 8.5 4 6 4 4 6 4 8.5c0 5 8 11 8 11s8-6 8-11z"/></svg>With Gratitude</div>
       <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>04 Sep 2026</div>
@@ -1444,6 +1463,53 @@ document.getElementById('rsvp-form').addEventListener('submit', function(e){
   msgBox.innerHTML = `Thank you, ${name || 'friend'} — your reply has been noted. <a href="${waLink}" target="_blank" rel="noopener" style="color:var(--champagne);text-decoration:underline;">Tap here to also confirm via WhatsApp</a>.`;
   this.reset();
 });
+
+/* ================= BACK TO TOP BUTTON ================= */
+const backToTopBtn = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 500) {
+    backToTopBtn.classList.add('show');
+  } else {
+    backToTopBtn.classList.remove('show');
+  }
+}, { passive: true });
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ================= CELEBRATION VIDEO AUTO-PLAY ON SCROLL ================= */
+(function(){
+  const celebCards = document.querySelectorAll('.celeb-card');
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const video = entry.target.querySelector('video');
+      if (video) {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  celebCards.forEach(card => videoObserver.observe(card));
+  
+  // Click to toggle play/pause
+  celebCards.forEach(card => {
+    const mediaEl = card.querySelector('.celeb-media');
+    const video = card.querySelector('video');
+    if (mediaEl && video) {
+      mediaEl.addEventListener('click', () => {
+        if (video.paused) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    }
+  });
+})();
 
 /* ================= PARTICLES CANVAS (petals + golden dust) ================= */
 (function(){
