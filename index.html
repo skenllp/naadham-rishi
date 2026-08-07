@@ -332,6 +332,96 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
   font-family:var(--display);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--champagne);
 }
 
+/* ---------- cinematic full-screen celebrations ---------- */
+.celeb-full{
+  position:relative;min-height:100vh;width:100%;overflow:hidden;
+  display:flex;align-items:flex-end;justify-content:flex-start;
+  padding:0;
+}
+.celeb-full .celeb-video-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transform:translateZ(0) scale(1.02);will-change:opacity;backface-visibility:hidden;opacity:0;transition:opacity 1s ease;}
+.celeb-full.video-playing .celeb-video-bg{opacity:1;}
+.celeb-full .celeb-poster-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;}
+.celeb-full .celeb-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;}
+.celeb-full.theme-pudava .celeb-overlay{background:linear-gradient(180deg,rgba(58,42,28,.15) 0%,rgba(20,14,8,.35) 55%,rgba(20,14,8,.92) 100%);}
+.celeb-full.theme-haldi .celeb-overlay{background:linear-gradient(180deg,rgba(122,82,15,.18) 0%,rgba(60,42,8,.4) 55%,rgba(30,20,4,.94) 100%);}
+.celeb-full.theme-sangeet .celeb-overlay{background:linear-gradient(180deg,rgba(10,30,20,.2) 0%,rgba(8,20,14,.45) 55%,rgba(6,14,10,.95) 100%);}
+.celeb-full.theme-wedding .celeb-overlay{background:linear-gradient(180deg,rgba(20,14,8,.1) 0%,rgba(20,14,8,.4) 50%,rgba(10,7,4,.94) 100%);}
+.celeb-full.theme-reception .celeb-overlay{background:linear-gradient(180deg,rgba(30,20,6,.15) 0%,rgba(20,14,4,.4) 55%,rgba(10,7,2,.94) 100%);}
+.celeb-full .celeb-full-content{position:relative;z-index:2;width:100%;padding:6vh 6vw 8vh;max-width:1000px;}
+.celeb-full .celeb-full-eyebrow{font-family:var(--display);font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;margin-bottom:1rem;}
+.celeb-full.theme-haldi .celeb-full-eyebrow{color:#f1c869;}
+.celeb-full.theme-sangeet .celeb-full-eyebrow{color:#8fdca8;}
+.celeb-full .celeb-full-title{font-size:clamp(2.4rem,6.5vw,4.6rem);font-family:var(--display);font-weight:600;color:var(--ivory);margin-bottom:.6rem;}
+.celeb-full .celeb-full-tagline{font-style:italic;color:var(--champagne);font-size:clamp(1rem,1.6vw,1.3rem);margin-bottom:1.6rem;max-width:640px;}
+.celeb-full .celeb-full-meta{display:flex;flex-wrap:wrap;gap:.7rem 2rem;margin-bottom:1.4rem;}
+.celeb-full .celeb-full-meta-item{display:flex;align-items:center;gap:.6rem;font-size:.95rem;color:rgba(245,239,226,.88);}
+.celeb-full .celeb-full-meta-item svg{width:18px;height:18px;color:var(--champagne);flex-shrink:0;}
+.celeb-full .celeb-full-attire{font-size:.9rem;color:rgba(245,239,226,.78);padding-top:.9rem;border-top:1px solid rgba(217,184,119,.28);max-width:640px;}
+.celeb-full .celeb-full-attire b{color:var(--champagne);font-family:var(--display);font-weight:500;letter-spacing:.03em;}
+.celeb-full-ornament{position:absolute;top:6vh;left:50%;transform:translateX(-50%);z-index:2;font-size:1.6rem;color:var(--champagne);opacity:.85;}
+.celeb-sound-btn{
+  position:absolute;top:6vh;right:6vw;z-index:3;width:44px;height:44px;border-radius:50%;
+  border:1px solid rgba(245,239,226,.4);background:rgba(20,14,8,.4);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;color:var(--ivory);cursor:pointer;
+}
+.celeb-sound-btn svg{width:18px;height:18px;}
+.celeb-expand-btn{
+  position:absolute;bottom:6vh;right:6vw;z-index:3;width:48px;height:48px;border-radius:50%;
+  border:1px solid rgba(245,239,226,.45);background:rgba(20,14,8,.45);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;color:var(--ivory);cursor:pointer;
+  transition:transform .35s,border-color .35s;
+}
+.celeb-expand-btn:hover{transform:scale(1.08);border-color:var(--gold);}
+.celeb-expand-btn svg{width:18px;height:18px;}
+.celeb-full .celeb-full-content > *{opacity:0;transform:translateY(30px);transition:opacity 1s cubic-bezier(.16,.8,.24,1),transform 1s cubic-bezier(.16,.8,.24,1);}
+.celeb-full.in-view .celeb-full-content > *{opacity:1;transform:translateY(0);}
+.celeb-full.in-view .celeb-full-content > *:nth-child(2){transition-delay:.1s;}
+.celeb-full.in-view .celeb-full-content > *:nth-child(3){transition-delay:.2s;}
+.celeb-full.in-view .celeb-full-content > *:nth-child(4){transition-delay:.3s;}
+.celeb-full.in-view .celeb-full-content > *:nth-child(5){transition-delay:.4s;}
+@media(max-width:760px){
+  .celeb-full .celeb-full-content{padding:5vh 6vw 7vh;}
+  .celeb-sound-btn{top:auto;bottom:6vh;left:6vw;right:auto;}
+}
+@media(prefers-reduced-motion:reduce){
+  .celeb-full .celeb-full-content > *{opacity:1;transform:none;transition:none;}
+}
+
+/* ---------- flip countdown ---------- */
+.flip-countdown{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem;}
+.flip-unit{display:flex;flex-direction:column;align-items:center;gap:.6rem;}
+.flip-card{position:relative;width:88px;height:104px;perspective:300px;}
+.flip-digit-face{
+  position:absolute;inset:0;border-radius:8px;background:linear-gradient(180deg,rgba(38,27,16,.92),rgba(18,12,7,.92));
+  border:1px solid var(--glass-brd);display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:2.4rem;color:var(--champagne);font-variant-numeric:tabular-nums;
+  box-shadow:0 12px 26px rgba(0,0,0,.4);
+}
+.flip-digit-face::after{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.4);}
+.flip-card.flipping .flip-digit-face{animation:flipDown .55s ease;}
+@keyframes flipDown{0%{transform:rotateX(0deg);}45%{transform:rotateX(-90deg);}55%{transform:rotateX(-90deg);}100%{transform:rotateX(0deg);}}
+.flip-label{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--cream);}
+@media(max-width:520px){.flip-card{width:64px;height:78px;}.flip-digit-face{font-size:1.7rem;}}
+
+/* ---------- gallery ---------- */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:3rem;}
+.gallery-item{position:relative;aspect-ratio:1/1;border-radius:8px;overflow:hidden;cursor:pointer;border:1px solid var(--glass-brd);opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,.8,.24,1),transform .9s cubic-bezier(.16,.8,.24,1);}
+.gallery-item.in-view{opacity:1;transform:translateY(0);}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,.8,.24,1),filter .6s ease;}
+.gallery-item:hover img{transform:scale(1.09);filter:brightness(1.08);}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,14,8,0) 60%,rgba(20,14,8,.55) 100%);pointer-events:none;}
+.gallery-item .gallery-cap{position:absolute;left:0;right:0;bottom:0;padding:.9rem 1rem;font-family:var(--display);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--champagne);z-index:1;}
+#gallery-lightbox{position:fixed;inset:0;z-index:130;display:flex;align-items:center;justify-content:center;background:rgba(10,7,4,.92);backdrop-filter:blur(10px);opacity:0;pointer-events:none;transition:opacity .4s ease;padding:4vh 4vw;}
+#gallery-lightbox.show{opacity:1;pointer-events:auto;}
+#gallery-lightbox img{max-width:92vw;max-height:86vh;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.6);transform:scale(.95);transition:transform .4s cubic-bezier(.16,.8,.24,1);}
+#gallery-lightbox.show img{transform:scale(1);}
+#gallery-lightbox-close{position:absolute;top:24px;right:24px;width:42px;height:42px;border-radius:50%;border:1px solid rgba(245,239,226,.5);background:rgba(20,14,8,.5);display:flex;align-items:center;justify-content:center;color:var(--ivory);cursor:pointer;}
+#gallery-lightbox-close svg{width:16px;height:16px;}
+
+/* ---------- section transition ornament (light rays) ---------- */
+.section-transition{position:relative;height:14vh;width:100%;overflow:hidden;background:var(--ink);z-index:2;}
+.section-transition svg{width:100%;height:100%;display:block;}
+
 /* ---------- venue ---------- */
 .venue-card{border:1px solid var(--glass-brd);border-radius:10px;overflow:hidden;background:rgba(20,14,8,.4);backdrop-filter:blur(6px);margin-top:2.5rem;text-align:left;}
 .venue-head{padding:2rem 2.2rem;border-bottom:1px solid var(--glass-brd);}
@@ -418,7 +508,7 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
         <text x="32" y="40" text-anchor="middle" font-family="Cinzel" font-size="20" fill="#d9b877" stroke="none">NR</text>
       </svg>
     </div>
-    <button id="enter-btn" class="btn reveal in reveal-delay-3">Enter</button>
+    <button id="enter-btn" class="btn reveal in reveal-delay-3">Begin Our Journey</button>
     <div class="lotus-hint reveal in reveal-delay-4">Scroll to Begin</div>
   </div>
 </div>
@@ -544,130 +634,146 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
   </div>
 </section>
 
-<!-- OUR CELEBRATIONS -->
+<!-- OUR CELEBRATIONS INTRO -->
 <section class="section" id="celebrations">
   <div class="bg-layer parallax-bg" style="background-image:url(assets/images/03_Journey_Couple.jpg);"></div>
   <div class="bg-fade dark"></div>
   <div class="content" style="max-width:900px;">
     <span class="eyebrow reveal">Every Moment, A Memory In The Making</span>
     <h2 class="display-lg reveal reveal-delay-1">Our Celebrations</h2>
-    <p class="reveal reveal-delay-2" style="margin-top:1rem;">Join us as we celebrate love, tradition, and the beginning of forever.</p>
-
-    <div class="celeb-list">
-
-      <!-- PUDAVA -->
-      <div class="celeb-card" data-celeb>
-        <div class="celeb-media" data-video-wrap>
-          <div class="celeb-poster" style="background-image:url(assets/images/celeb-pudava-poster.jpg);"></div>
-          <video data-src="assets/video/pudava.mp4" poster="assets/images/celeb-pudava-poster.jpg" muted loop playsinline preload="none"></video>
-          <button class="celeb-play" type="button" aria-label="Watch Pudava in fullscreen" data-open-modal data-title="Pudava">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </div>
-        <div class="celeb-info">
-          <span class="fam-eyebrow">Pudava</span>
-          <h3>A Sacred Blessing</h3>
-          <p class="celeb-tagline">A sacred blessing, a cherished tradition.</p>
-          <div class="celeb-meta">
-            <span class="celeb-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>August 31, 2026</span>
-            <span class="celeb-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>12:00 PM</span>
-            <span class="celeb-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s7-6.4 7-12a7 7 0 10-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>Green Hayat, Madanada, Kollam</span>
-          </div>
-          <div class="celeb-attire"><b>Attire</b> — Traditional elegance, in any colour.</div>
-        </div>
-      </div>
-
-      <!-- HALDI -->
-      <div class="celeb-card" data-celeb>
-        <div class="celeb-media" data-video-wrap>
-          <div class="celeb-poster" style="background-image:url(assets/images/celeb-haldi-poster.jpg);"></div>
-          <video data-src="assets/video/haldi.mp4" poster="assets/images/celeb-haldi-poster.jpg" muted loop playsinline preload="none"></video>
-          <button class="celeb-play" type="button" aria-label="Watch Haldi in fullscreen" data-open-modal data-title="Haldi">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </div>
-        <div class="celeb-info">
-          <span class="fam-eyebrow">Haldi</span>
-          <h3>A Morning Of Sunshine</h3>
-          <p class="celeb-tagline">A morning of sunshine, laughter and love.</p>
-          <div class="celeb-meta">
-            <span class="celeb-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>September 2, 2026</span>
-            <span class="celeb-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>10:00 AM Onwards</span>
-            <span class="celeb-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s7-6.4 7-12a7 7 0 10-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>The Paro Homestay, Kureepuzha, Kollam</span>
-          </div>
-          <div class="celeb-attire"><b>Colour Palette</b> — Magenta or orange. Bright, joyful, full of warmth.</div>
-        </div>
-      </div>
-
-      <!-- SANGEET -->
-      <div class="celeb-card" data-celeb>
-        <div class="celeb-media" data-video-wrap>
-          <div class="celeb-poster" style="background-image:url(assets/images/celeb-sangeet-poster.jpg);"></div>
-          <video data-src="assets/video/sangeet.mp4" poster="assets/images/celeb-sangeet-poster.jpg" muted loop playsinline preload="none"></video>
-          <button class="celeb-play" type="button" aria-label="Watch Sangeet in fullscreen" data-open-modal data-title="Sangeet">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </div>
-        <div class="celeb-info">
-          <span class="fam-eyebrow">Sangeet</span>
-          <h3>An Evening Of Rhythm</h3>
-          <p class="celeb-tagline">An evening of rhythm, joy and togetherness.</p>
-          <div class="celeb-meta">
-            <span class="celeb-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>September 2, 2026</span>
-            <span class="celeb-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>5:30 PM Onwards</span>
-            <span class="celeb-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s7-6.4 7-12a7 7 0 10-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>The Paro Homestay, Kureepuzha, Kollam</span>
-          </div>
-          <div class="celeb-attire"><b>Evening Palette</b> — Maroon, black or bottle green. Dress in rich tones.</div>
-        </div>
-      </div>
-
-      <!-- WEDDING -->
-      <div class="celeb-card" data-celeb>
-        <div class="celeb-media" data-video-wrap>
-          <div class="celeb-poster" style="background-image:url(assets/images/celeb-wedding-poster.jpg);"></div>
-          <video data-src="assets/video/wedding.mp4" poster="assets/images/celeb-wedding-poster.jpg" muted loop playsinline preload="none"></video>
-          <button class="celeb-play" type="button" aria-label="Watch Wedding in fullscreen" data-open-modal data-title="Wedding">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </div>
-        <div class="celeb-info">
-          <span class="fam-eyebrow">Wedding</span>
-          <h3>The Moment We Become One</h3>
-          <div class="celeb-meta">
-            <span class="celeb-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>September 4, 2026</span>
-            <span class="celeb-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>12:02 PM – 12:20 PM</span>
-            <span class="celeb-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s7-6.4 7-12a7 7 0 10-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>Sreedhareeyam Convention Centre, Karunagappally, Kollam</span>
-          </div>
-          <div class="celeb-attire"><b>Attire</b> — Formal elegance. Timeless, classy — celebrate in style.</div>
-        </div>
-      </div>
-
-      <!-- RECEPTION -->
-      <div class="celeb-card" data-celeb>
-        <div class="celeb-media" data-video-wrap>
-          <div class="celeb-poster" style="background-image:url(assets/images/celeb-reception-poster.jpg);"></div>
-          <video data-src="assets/video/reception.mp4" poster="assets/images/celeb-reception-poster.jpg" muted loop playsinline preload="none"></video>
-          <button class="celeb-play" type="button" aria-label="Watch Reception in fullscreen" data-open-modal data-title="Reception">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </div>
-        <div class="celeb-info">
-          <span class="fam-eyebrow">Reception</span>
-          <h3>An Evening To Celebrate</h3>
-          <p class="celeb-tagline">An evening to celebrate love and togetherness.</p>
-          <div class="celeb-meta">
-            <span class="celeb-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>September 5, 2026</span>
-            <span class="celeb-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>4:30 PM Onwards</span>
-            <span class="celeb-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s7-6.4 7-12a7 7 0 10-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>Vismaya Convention Centre, Elampalloor Road, Kundara</span>
-          </div>
-          <div class="celeb-attire"><b>Attire</b> — Formal elegance. Timeless, classy — celebrate in style.</div>
-        </div>
-      </div>
-
-    </div>
-    <p class="script reveal" style="font-size:1.6rem;margin-top:3rem;">We can't wait to celebrate these moments with you.</p>
+    <p class="reveal reveal-delay-2" style="margin-top:1rem;">Five sacred chapters, one beautiful story. Join us as we celebrate love, tradition, and the beginning of forever.</p>
+    <div class="lotus-hint reveal reveal-delay-3">Scroll To Begin The Celebrations</div>
   </div>
 </section>
+
+<!-- PUDAVA -->
+<section class="celeb-full theme-pudava" id="celeb-pudava" data-celeb-full data-theme="pudava">
+  <div class="celeb-poster-bg" style="background-image:url(assets/images/celeb-pudava-poster.jpg);"></div>
+  <video class="celeb-video-bg" data-src="assets/video/pudava.mp4" muted loop playsinline preload="none"></video>
+  <div class="celeb-overlay"></div>
+  <span class="celeb-full-ornament">ॐ</span>
+  <button class="celeb-sound-btn" type="button" aria-label="Toggle sound" data-sound-toggle>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
+  </button>
+  <button class="celeb-expand-btn" type="button" aria-label="Watch Pudava in fullscreen" data-open-modal data-title="Pudava" data-src="assets/video/pudava.mp4">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+  </button>
+  <div class="celeb-full-content">
+    <span class="celeb-full-eyebrow">Chapter One · Pudava</span>
+    <h3 class="celeb-full-title">A Sacred Blessing</h3>
+    <p class="celeb-full-tagline">A sacred blessing, a cherished tradition.</p>
+    <div class="celeb-full-meta">
+      <span class="celeb-full-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>August 31, 2026</span>
+      <span class="celeb-full-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>12:00 PM</span>
+      <span class="celeb-full-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s7-6.4 7-12a7 7 0 10-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>Green Hayat, Madanada, Kollam</span>
+    </div>
+    <div class="celeb-full-attire"><b>Attire</b> — Traditional elegance, in any colour.</div>
+  </div>
+</section>
+
+<!-- HALDI -->
+<section class="celeb-full theme-haldi" id="celeb-haldi" data-celeb-full data-theme="haldi">
+  <div class="celeb-poster-bg" style="background-image:url(assets/images/celeb-haldi-poster.jpg);"></div>
+  <video class="celeb-video-bg" data-src="assets/video/haldi.mp4" muted loop playsinline preload="none"></video>
+  <div class="celeb-overlay"></div>
+  <span class="celeb-full-ornament" style="color:#f1c869;">ॐ</span>
+  <button class="celeb-sound-btn" type="button" aria-label="Toggle sound" data-sound-toggle>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
+  </button>
+  <button class="celeb-expand-btn" type="button" aria-label="Watch Haldi in fullscreen" data-open-modal data-title="Haldi" data-src="assets/video/haldi.mp4">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+  </button>
+  <div class="celeb-full-content">
+    <span class="celeb-full-eyebrow">Chapter Two · Haldi</span>
+    <h3 class="celeb-full-title">A Morning Of Sunshine</h3>
+    <p class="celeb-full-tagline">A morning of sunshine, laughter and love.</p>
+    <div class="celeb-full-meta">
+      <span class="celeb-full-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>September 2, 2026</span>
+      <span class="celeb-full-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>10:00 AM Onwards</span>
+      <span class="celeb-full-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s7-6.4 7-12a7 7 0 10-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>The Paro Homestay, Kureepuzha, Kollam</span>
+    </div>
+    <div class="celeb-full-attire"><b>Colour Palette</b> — Magenta or orange. Bright, joyful, full of warmth.</div>
+  </div>
+</section>
+
+<!-- SANGEET -->
+<section class="celeb-full theme-sangeet" id="celeb-sangeet" data-celeb-full data-theme="sangeet">
+  <div class="celeb-poster-bg" style="background-image:url(assets/images/celeb-sangeet-poster.jpg);"></div>
+  <video class="celeb-video-bg" data-src="assets/video/sangeet.mp4" muted loop playsinline preload="none"></video>
+  <div class="celeb-overlay"></div>
+  <span class="celeb-full-ornament" style="color:#8fdca8;">ॐ</span>
+  <button class="celeb-sound-btn" type="button" aria-label="Toggle sound" data-sound-toggle>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
+  </button>
+  <button class="celeb-expand-btn" type="button" aria-label="Watch Sangeet in fullscreen" data-open-modal data-title="Sangeet" data-src="assets/video/sangeet.mp4">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+  </button>
+  <div class="celeb-full-content">
+    <span class="celeb-full-eyebrow">Chapter Three · Sangeet</span>
+    <h3 class="celeb-full-title">An Evening Of Rhythm</h3>
+    <p class="celeb-full-tagline">An evening of rhythm, joy and togetherness.</p>
+    <div class="celeb-full-meta">
+      <span class="celeb-full-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>September 2, 2026</span>
+      <span class="celeb-full-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>5:30 PM Onwards</span>
+      <span class="celeb-full-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s7-6.4 7-12a7 7 0 10-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>The Paro Homestay, Kureepuzha, Kollam</span>
+    </div>
+    <div class="celeb-full-attire"><b>Evening Palette</b> — Maroon, black or bottle green. Dress in rich tones.</div>
+  </div>
+</section>
+
+<!-- WEDDING -->
+<section class="celeb-full theme-wedding" id="celeb-wedding" data-celeb-full data-theme="wedding">
+  <div class="celeb-poster-bg" style="background-image:url(assets/images/celeb-wedding-poster.jpg);"></div>
+  <video class="celeb-video-bg" data-src="assets/video/wedding.mp4" muted loop playsinline preload="none"></video>
+  <div class="celeb-overlay"></div>
+  <span class="celeb-full-ornament">ॐ</span>
+  <button class="celeb-sound-btn" type="button" aria-label="Toggle sound" data-sound-toggle>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
+  </button>
+  <button class="celeb-expand-btn" type="button" aria-label="Watch Wedding in fullscreen" data-open-modal data-title="Wedding" data-src="assets/video/wedding.mp4">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+  </button>
+  <div class="celeb-full-content" style="max-width:900px;">
+    <span class="celeb-full-eyebrow">The Sacred Union · Wedding</span>
+    <h3 class="celeb-full-title" style="font-size:clamp(2.8rem,7.5vw,5.4rem);">The Moment We Become One</h3>
+    <p class="celeb-full-tagline script" style="font-size:clamp(1.3rem,2.6vw,1.9rem);font-style:normal;">"Two souls, one sacred vow, blessed by the divine."</p>
+    <div class="celeb-full-meta">
+      <span class="celeb-full-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>September 4, 2026</span>
+      <span class="celeb-full-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Muhurtham 12:02 PM – 12:20 PM</span>
+      <span class="celeb-full-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s7-6.4 7-12a7 7 0 10-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>Sreedhareeyam Convention Centre, Karunagappally, Kollam</span>
+    </div>
+    <div class="celeb-full-attire"><b>Attire</b> — Formal elegance. Timeless, classy — celebrate in style.</div>
+  </div>
+</section>
+
+<!-- RECEPTION -->
+<section class="celeb-full theme-reception" id="celeb-reception" data-celeb-full data-theme="reception">
+  <div class="celeb-poster-bg" style="background-image:url(assets/images/celeb-reception-poster.jpg);"></div>
+  <video class="celeb-video-bg" data-src="assets/video/reception.mp4" muted loop playsinline preload="none"></video>
+  <div class="celeb-overlay"></div>
+  <span class="celeb-full-ornament">ॐ</span>
+  <button class="celeb-sound-btn" type="button" aria-label="Toggle sound" data-sound-toggle>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
+  </button>
+  <button class="celeb-expand-btn" type="button" aria-label="Watch Reception in fullscreen" data-open-modal data-title="Reception" data-src="assets/video/reception.mp4">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+  </button>
+  <div class="celeb-full-content">
+    <span class="celeb-full-eyebrow">Chapter Five · Reception</span>
+    <h3 class="celeb-full-title">An Evening To Celebrate</h3>
+    <p class="celeb-full-tagline">An evening to celebrate love and togetherness.</p>
+    <div class="celeb-full-meta">
+      <span class="celeb-full-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>September 5, 2026</span>
+      <span class="celeb-full-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>4:30 PM Onwards</span>
+      <span class="celeb-full-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s7-6.4 7-12a7 7 0 10-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>Vismaya Convention Centre, Elampalloor Road, Kundara</span>
+    </div>
+    <div class="celeb-full-attire"><b>Attire</b> — Formal elegance. Timeless, classy — celebrate in style.</div>
+  </div>
+</section>
+
+<div class="section-transition">
+  <svg viewBox="0 0 1000 100" preserveAspectRatio="none"><defs><linearGradient id="celebFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#241a12"/><stop offset="100%" stop-color="#241a12" stop-opacity="0"/></linearGradient></defs><rect width="1000" height="100" fill="url(#celebFade)"/></svg>
+</div>
 
 <!-- SACRED DATE REVEAL -->
 <section class="section" id="sacred-date">
@@ -707,12 +813,13 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
   <div class="content">
     <span class="eyebrow reveal">One Month Of Anticipation, A Lifetime Of Devotion</span>
     <h2 class="display-lg reveal reveal-delay-1">The Countdown To Our Forever</h2>
-    <div class="countdown-grid reveal reveal-delay-2">
-      <div class="count-box"><div class="count-num" id="cd-days">00</div><div class="count-label">Days</div></div>
-      <div class="count-box"><div class="count-num" id="cd-hours">00</div><div class="count-label">Hours</div></div>
-      <div class="count-box"><div class="count-num" id="cd-mins">00</div><div class="count-label">Minutes</div></div>
-      <div class="count-box"><div class="count-num" id="cd-secs">00</div><div class="count-label">Seconds</div></div>
+    <div class="flip-countdown reveal reveal-delay-2">
+      <div class="flip-unit"><div class="flip-card"><div class="flip-digit-face" id="cd-days">00</div></div><div class="flip-label">Days</div></div>
+      <div class="flip-unit"><div class="flip-card"><div class="flip-digit-face" id="cd-hours">00</div></div><div class="flip-label">Hours</div></div>
+      <div class="flip-unit"><div class="flip-card"><div class="flip-digit-face" id="cd-mins">00</div></div><div class="flip-label">Minutes</div></div>
+      <div class="flip-unit"><div class="flip-card"><div class="flip-digit-face" id="cd-secs">00</div></div><div class="flip-label">Seconds</div></div>
     </div>
+    <div class="lede reveal reveal-delay-2" style="margin-top:1.2rem;">Wedding Muhurtham · 04 September 2026, 12:02 PM</div>
     <p class="reveal reveal-delay-3" style="margin-top:2.2rem;font-style:italic;">"Written in the stars, sealed with love, blessed by the divine."</p>
   </div>
 </section>
@@ -790,6 +897,32 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
   </div>
 </section>
 
+<!-- GALLERY (temporarily disabled — remove the surrounding comment to bring it back)
+<section class="section" id="gallery">
+  <div class="bg-layer parallax-bg" style="background-image:url(assets/images/04_Golden_Path_Portrait.jpg);"></div>
+  <div class="bg-fade dark"></div>
+  <div class="content" style="max-width:1000px;">
+    <span class="eyebrow reveal">Moments We Hold Close</span>
+    <h2 class="display-lg reveal reveal-delay-1">Gallery</h2>
+    <p class="reveal reveal-delay-2" style="margin-top:1rem;">A glimpse into our journey — captured in light, love and colour.</p>
+    <div class="gallery-grid" id="gallery-grid">
+      <div class="gallery-item" data-full="assets/images/01_Hero_Portrait.jpg"><img src="assets/images/01_Hero_Portrait.jpg" alt="Naadham and Rishi" loading="lazy"><span class="gallery-cap">The Beginning</span></div>
+      <div class="gallery-item" data-full="assets/images/02_Hero_Landscape.jpg"><img src="assets/images/02_Hero_Landscape.jpg" alt="Naadham and Rishi" loading="lazy"><span class="gallery-cap">Two Souls</span></div>
+      <div class="gallery-item" data-full="assets/images/03_Journey_Couple.jpg"><img src="assets/images/03_Journey_Couple.jpg" alt="Our Journey" loading="lazy"><span class="gallery-cap">Our Journey</span></div>
+      <div class="gallery-item" data-full="assets/images/04_Golden_Path_Portrait.jpg"><img src="assets/images/04_Golden_Path_Portrait.jpg" alt="Golden Path" loading="lazy"><span class="gallery-cap">The Golden Path</span></div>
+      <div class="gallery-item" data-full="assets/images/05_Temple_Sunrise_Portrait.jpg"><img src="assets/images/05_Temple_Sunrise_Portrait.jpg" alt="Temple Sunrise" loading="lazy"><span class="gallery-cap">Blessed Beginnings</span></div>
+      <div class="gallery-item" data-full="assets/images/06_Temple_Sunrise_Landscape.jpg"><img src="assets/images/06_Temple_Sunrise_Landscape.jpg" alt="Temple Sunrise" loading="lazy"><span class="gallery-cap">Sacred Grounds</span></div>
+      <div class="gallery-item" data-full="assets/images/celeb-pudava-poster.jpg"><img src="assets/images/celeb-pudava-poster.jpg" alt="Pudava" loading="lazy"><span class="gallery-cap">Pudava</span></div>
+      <div class="gallery-item" data-full="assets/images/celeb-haldi-poster.jpg"><img src="assets/images/celeb-haldi-poster.jpg" alt="Haldi" loading="lazy"><span class="gallery-cap">Haldi</span></div>
+      <div class="gallery-item" data-full="assets/images/celeb-sangeet-poster.jpg"><img src="assets/images/celeb-sangeet-poster.jpg" alt="Sangeet" loading="lazy"><span class="gallery-cap">Sangeet</span></div>
+      <div class="gallery-item" data-full="assets/images/celeb-wedding-poster.jpg"><img src="assets/images/celeb-wedding-poster.jpg" alt="Wedding" loading="lazy"><span class="gallery-cap">Wedding</span></div>
+      <div class="gallery-item" data-full="assets/images/celeb-reception-poster.jpg"><img src="assets/images/celeb-reception-poster.jpg" alt="Reception" loading="lazy"><span class="gallery-cap">Reception</span></div>
+      <div class="gallery-item" data-full="assets/images/07_Footer_Portrait.jpg"><img src="assets/images/07_Footer_Portrait.jpg" alt="Forever" loading="lazy"><span class="gallery-cap">Forever</span></div>
+    </div>
+  </div>
+</section>
+-->
+
 <!-- RSVP -->
 <section class="section" id="rsvp">
   <div class="bg-layer parallax-bg" style="background-image:url(assets/images/03_Journey_Couple.jpg);"></div>
@@ -845,6 +978,14 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
     <video id="celeb-modal-video" playsinline></video>
     <div class="modal-caption" id="celeb-modal-caption"></div>
   </div>
+</div>
+
+<!-- GALLERY LIGHTBOX -->
+<div id="gallery-lightbox" aria-hidden="true">
+  <button id="gallery-lightbox-close" type="button" aria-label="Close image">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <img id="gallery-lightbox-img" src="" alt="">
 </div>
 <script>
 const BELL_DATA_URI = "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 60'><line x1='20' y1='0' x2='20' y2='14' stroke='#d9b877' stroke-width='2'/><path d='M10 14 Q20 8 30 14 L32 40 Q20 48 8 40 Z' fill='#c9a24a' stroke='#7a5230' stroke-width='1.5'/><circle cx='20' cy='48' r='3' fill='#7a5230'/></svg>`);
@@ -961,97 +1102,96 @@ window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), {
 window.addEventListener('resize', updateParallax);
 updateParallax();
 
-/* ================= CELEBRATIONS VIDEOS ================= */
+/* ================= CELEBRATIONS — FULLSCREEN CINEMATIC SECTIONS ================= */
 (function(){
-  const cards = Array.from(document.querySelectorAll('[data-celeb]'));
-  if (!cards.length) return;
+  const sections = Array.from(document.querySelectorAll('[data-celeb-full]'));
+  if (!sections.length) return;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isCoarse = window.matchMedia('(hover: none)').matches;
 
-  cards.forEach(card => {
-    const video = card.querySelector('video[data-src]');
-    const poster = card.querySelector('.celeb-poster');
-    card._video = video;
-    card._poster = poster;
-    card._loaded = false;
+  sections.forEach(sec => {
+    sec._video = sec.querySelector('video.celeb-video-bg');
+    sec._posterBg = sec.querySelector('.celeb-poster-bg');
+    sec._loaded = false;
   });
 
-  function loadVideo(card){
-    const video = card._video;
-    if (!video || card._loaded) return;
-    card._loaded = true;
+  function loadVideo(sec){
+    const video = sec._video;
+    if (!video || sec._loaded) return;
+    sec._loaded = true;
     video.src = video.getAttribute('data-src');
     video.load();
-    video.addEventListener('loadeddata', () => {
-      if (card._poster) card._poster.style.opacity = '0';
-    }, { once: true });
+    /* The poster stays put underneath; the video fades in on top via
+       the .video-playing class once playback actually starts, so there's
+       never a gap between "poster gone" and "video visible". */
   }
-
-  function playVideo(card){
+  function playVideo(sec){
     if (reduceMotion) return;
-    const video = card._video;
+    const video = sec._video;
     if (!video) return;
-    if (!card._loaded) loadVideo(card);
+    if (!sec._loaded) loadVideo(sec);
     const p = video.play();
     if (p && p.catch) p.catch(() => {});
+    sec.classList.add('video-playing');
   }
-  function pauseVideo(card){
-    const video = card._video;
+  function pauseVideo(sec){
+    const video = sec._video;
     if (video && !video.paused) video.pause();
+    sec.classList.remove('video-playing');
   }
 
-  /* Lazy-load slightly before viewport, play/glow at ~60% visible */
   if (!reduceMotion) {
     const lazyObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) loadVideo(entry.target);
-      });
-    }, { rootMargin: '60% 0px 60% 0px', threshold: 0.01 });
+      entries.forEach(entry => { if (entry.isIntersecting) loadVideo(entry.target); });
+    }, { rootMargin: '70% 0px 70% 0px', threshold: 0.01 });
 
+    /* Only the section most in-view plays; every other section pauses — never play all together.
+       Hysteresis (play above 60%, only pause below 25%) stops rapid toggling — and the
+       resulting flicker/shake — while the section hovers right at a threshold edge. */
     const playObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        const card = entry.target;
-        if (entry.isIntersecting) {
-          card.classList.add('in-view', 'glow');
-          playVideo(card);
-        } else {
-          card.classList.remove('glow');
-          pauseVideo(card);
+        const sec = entry.target;
+        const ratio = entry.intersectionRatio;
+        if (ratio >= 0.6) {
+          sections.forEach(other => { if (other !== sec) pauseVideo(other); });
+          sec.classList.add('in-view');
+          playVideo(sec);
+        } else if (ratio <= 0.25) {
+          sec.classList.remove('in-view');
+          pauseVideo(sec);
         }
       });
-    }, { threshold: 0.6 });
+    }, { threshold: [0, 0.25, 0.6, 0.9] });
 
-    cards.forEach(card => {
-      lazyObserver.observe(card);
-      playObserver.observe(card);
-    });
-
-    /* Desktop hover: resume playback if paused */
-    if (!isCoarse) {
-      cards.forEach(card => {
-        card.addEventListener('mouseenter', () => playVideo(card), { passive: true });
-      });
-    }
+    sections.forEach(sec => { lazyObserver.observe(sec); playObserver.observe(sec); });
   } else {
-    /* Reduced motion: show cards immediately, poster only, no autoplay */
-    cards.forEach(card => card.classList.add('in-view'));
+    sections.forEach(sec => { sec.classList.add('in-view'); loadVideo(sec); });
   }
 
-  /* Fullscreen modal */
+  /* Muted-by-default sound toggle per section */
+  document.querySelectorAll('[data-sound-toggle]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const sec = btn.closest('[data-celeb-full]');
+      const video = sec && sec._video;
+      if (!video) return;
+      video.muted = !video.muted;
+      btn.classList.toggle('unmuted', !video.muted);
+      btn.style.borderColor = video.muted ? '' : 'var(--gold)';
+    });
+  });
+
+  /* Fullscreen modal (shared with expand buttons) */
   const modal = document.getElementById('celeb-modal');
   const modalVideo = document.getElementById('celeb-modal-video');
   const modalCaption = document.getElementById('celeb-modal-caption');
   const modalClose = document.getElementById('celeb-modal-close');
   let lastScrollY = 0;
-  let sourceCard = null;
 
   function openModal(btn){
-    const wrap = btn.closest('[data-video-wrap]');
-    const srcVideo = wrap ? wrap.querySelector('video[data-src]') : null;
-    if (!srcVideo) return;
-    sourceCard = btn.closest('[data-celeb]');
+    const src = btn.getAttribute('data-src');
+    if (!src) return;
     lastScrollY = window.scrollY;
-    modalVideo.src = srcVideo.getAttribute('data-src');
+    modalVideo.src = src;
     modalCaption.textContent = btn.getAttribute('data-title') || '';
     modal.classList.add('show');
     modal.setAttribute('aria-hidden', 'false');
@@ -1068,7 +1208,6 @@ updateParallax();
     modalVideo.load();
     document.body.style.overflow = '';
     window.scrollTo({ top: lastScrollY, behavior: 'auto' });
-    sourceCard = null;
   }
   document.querySelectorAll('[data-open-modal]').forEach(btn => {
     btn.addEventListener('click', (e) => { e.stopPropagation(); openModal(btn); });
@@ -1078,6 +1217,37 @@ updateParallax();
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
   });
+})();
+
+/* ================= GALLERY ================= */
+(function(){
+  const items = Array.from(document.querySelectorAll('.gallery-item'));
+  if (!items.length) return;
+  const galleryObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in-view'); });
+  }, { threshold: 0.12 });
+  items.forEach(el => galleryObserver.observe(el));
+
+  const lightbox = document.getElementById('gallery-lightbox');
+  const lightboxImg = document.getElementById('gallery-lightbox-img');
+  const lightboxClose = document.getElementById('gallery-lightbox-close');
+
+  function openLightbox(item){
+    lightboxImg.src = item.getAttribute('data-full');
+    lightboxImg.alt = item.querySelector('img') ? item.querySelector('img').alt : '';
+    lightbox.classList.add('show');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('show');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  items.forEach(item => item.addEventListener('click', () => openLightbox(item)));
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox.classList.contains('show')) closeLightbox(); });
 })();
 
 /* ================= LOTUS REVEAL ================= */
@@ -1129,12 +1299,21 @@ function tickCountdown(){
   const m = Math.floor((diff / (1000*60)) % 60);
   const s = Math.floor((diff / 1000) % 60);
   const pad = n => String(n).padStart(2,'0');
-  const dEl = document.getElementById('cd-days');
-  if (dEl){
-    dEl.textContent = pad(d);
-    document.getElementById('cd-hours').textContent = pad(h);
-    document.getElementById('cd-mins').textContent = pad(m);
-    document.getElementById('cd-secs').textContent = pad(s);
+  setFlipDigit('cd-days', pad(d));
+  setFlipDigit('cd-hours', pad(h));
+  setFlipDigit('cd-mins', pad(m));
+  setFlipDigit('cd-secs', pad(s));
+}
+function setFlipDigit(id, value){
+  const face = document.getElementById(id);
+  if (!face) return;
+  if (face.textContent === value) return;
+  const card = face.closest('.flip-card');
+  face.textContent = value;
+  if (card && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    card.classList.remove('flipping');
+    void card.offsetWidth; /* restart animation */
+    card.classList.add('flipping');
   }
 }
 setInterval(tickCountdown, 1000);
