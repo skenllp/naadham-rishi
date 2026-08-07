@@ -4,8 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Naadham &amp; Rishi — A Sacred Beginning</title>
+<meta name="description" content="Join us as Naadham and Rishi begin their forever. A sacred celebration of two souls destined to become one.">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="">
+<meta property="og:title" content="Naadham & Rishi — A Sacred Beginning">
+<meta property="og:description" content="Join us as we begin our forever. A sacred celebration of two souls destined to become one.">
+<meta property="og:image" content="assets/images/og-image.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="">
+<meta property="twitter:title" content="Naadham & Rishi — A Sacred Beginning">
+<meta property="twitter:description" content="Join us as we begin our forever. A sacred celebration of two souls destined to become one.">
+<meta property="twitter:image" content="assets/images/og-image.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600;700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+<!-- Preload hero image for faster initial render -->
+<link rel="preload" as="image" href="assets/images/02_Hero_Landscape.jpg">
 <style>
 :root{
   --ivory:#f5efe2;
@@ -24,14 +42,17 @@
   --script: 'Tangerine', cursive;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;height:100%;}
 body{
   font-family:var(--serif);
   background:var(--ink);
   color:var(--ivory);
   overflow-x:hidden;
   cursor:none;
+  min-height:100vh;
+  min-height:-webkit-fill-available;
 }
+html{height:-webkit-fill-available;}
 body.no-cursor-fx{cursor:auto;}
 ::selection{background:var(--gold);color:var(--ink);}
 
@@ -76,18 +97,18 @@ body.no-cursor-fx{cursor:auto;}
 
 /* ---------- typography ---------- */
 .eyebrow{
-  font-family:var(--display);font-size:.72rem;letter-spacing:.42em;
+  font-family:var(--display);font-size:clamp(.8rem,1vw,.95rem);letter-spacing:.38em;
   color:var(--champagne);text-transform:uppercase;margin-bottom:1.4rem;
   opacity:.9;
 }
 h1,h2,h3{font-family:var(--display);font-weight:500;letter-spacing:.03em;line-height:1.15;}
-.display-xl{font-size:clamp(2.6rem,7vw,5.2rem);font-weight:600;}
-.display-lg{font-size:clamp(2rem,5vw,3.6rem);}
-.display-md{font-size:clamp(1.5rem,3.2vw,2.2rem);}
+.display-xl{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:600;}
+.display-lg{font-size:clamp(2rem,4.5vw,3.4rem);}
+.display-md{font-size:clamp(1.6rem,3vw,2.2rem);}
 .script{font-family:var(--script);color:var(--champagne);font-weight:700;}
-.script-lg{font-size:clamp(3rem,9vw,6.5rem);line-height:1;}
-p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgba(245,239,226,.92);}
-.lede{font-size:clamp(1.05rem,2vw,1.4rem);font-style:italic;font-weight:400;color:var(--cream);}
+.script-lg{font-size:clamp(3.2rem,7.5vw,6rem);line-height:1.1;}
+p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.7;color:rgba(245,239,226,.92);}
+.lede{font-size:clamp(1.15rem,1.9vw,1.4rem);font-style:italic;font-weight:400;color:var(--cream);line-height:1.65;}
 .divider{
   display:flex;align-items:center;justify-content:center;gap:.8rem;
   margin:1.6rem auto;color:var(--gold);
@@ -110,9 +131,9 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
 /* ---------- buttons ---------- */
 .btn{
   position:relative;display:inline-flex;align-items:center;gap:.6rem;
-  font-family:var(--display);font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;
+  font-family:var(--display);font-size:clamp(.72rem,.85vw,.82rem);letter-spacing:.26em;text-transform:uppercase;
   color:var(--ivory);background:transparent;border:1px solid var(--glass-brd);
-  padding:1.05rem 2.6rem;border-radius:2px;cursor:pointer;overflow:hidden;
+  padding:clamp(.95rem,1.2vw,1.1rem) clamp(2rem,2.8vw,2.6rem);border-radius:2px;cursor:pointer;overflow:hidden;
   transition:letter-spacing .4s,color .4s,border-color .4s;
   text-decoration:none;
 }
@@ -120,37 +141,35 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
   content:'';position:absolute;inset:0;background:linear-gradient(120deg,var(--deep-gold),var(--champagne),var(--gold));
   transform:translateX(-105%);transition:transform .55s cubic-bezier(.16,.8,.24,1);z-index:-1;
 }
-.btn:hover{color:var(--ink);letter-spacing:.34em;border-color:var(--gold);}
+.btn:hover{color:var(--ink);letter-spacing:.32em;border-color:var(--gold);}
 .btn:hover::before{transform:translateX(0);}
+.btn:focus{outline:2px solid var(--gold);outline-offset:4px;}
+.btn:focus:not(:focus-visible){outline:none;}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:4px;}
 
 /* ---------- ornamental frame ---------- */
-.om{font-size:1.6rem;color:var(--champagne);opacity:.85;margin-bottom:.6rem;display:block;}
+.om{font-size:clamp(1.4rem,2vw,1.8rem);color:var(--champagne);opacity:.85;margin-bottom:.6rem;display:block;}
 
 /* ---------- bells top corners ---------- */
-.bell-deco{position:absolute;top:0;width:34px;opacity:.75;z-index:3;filter:drop-shadow(0 4px 8px rgba(0,0,0,.4));animation:swing 4.5s ease-in-out infinite;transform-origin:top center;}
+.bell-deco{position:absolute;top:0;width:clamp(28px,4vw,34px);opacity:.75;z-index:3;filter:drop-shadow(0 4px 8px rgba(0,0,0,.4));animation:swing 4.5s ease-in-out infinite;transform-origin:top center;}
 .bell-deco.left{left:5vw;}
 .bell-deco.right{right:5vw;}
 @keyframes swing{0%,100%{transform:rotate(-6deg);}50%{transform:rotate(6deg);}}
-.bell-deco.bell-sm{width:24px;top:3vh;opacity:.55;animation-duration:5.5s;}
-.lotus-glow-icon{width:40px;height:40px;margin:0 auto 1rem;display:block;animation:lotusPulse 3.2s ease-in-out infinite;}
+.bell-deco.bell-sm{width:clamp(20px,3vw,24px);top:3vh;opacity:.55;animation-duration:5.5s;}
+.lotus-glow-icon{width:clamp(35px,5vw,42px);height:clamp(35px,5vw,42px);margin:0 auto 1rem;display:block;animation:lotusPulse 3.2s ease-in-out infinite;}
 @keyframes lotusPulse{0%,100%{opacity:.55;filter:drop-shadow(0 0 0px rgba(169,126,47,0));}50%{opacity:1;filter:drop-shadow(0 0 10px rgba(169,126,47,.55));}}
 
 /* ---------- music toggle ---------- */
 #music-toggle{
-  position:fixed;top:24px;right:24px;z-index:50;
+  position:fixed;bottom:24px;right:24px;z-index:50;
   width:46px;height:46px;border-radius:50%;
   border:1px solid var(--glass-brd);background:rgba(20,14,8,.45);backdrop-filter:blur(6px);
   display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--champagne);
-  transition:box-shadow .3s;
+  transition:box-shadow .3s,transform .3s;
 }
+#music-toggle:hover{transform:scale(1.08);}
 #music-toggle.playing{box-shadow:0 0 0 6px rgba(201,162,74,.15);}
 #music-toggle svg{width:18px;height:18px;}
-#nav-brand{
-  position:fixed;top:22px;left:22px;z-index:50;font-family:var(--display);
-  font-size:.78rem;letter-spacing:.22em;color:var(--ivory);
-  padding:.6rem 1rem;border-radius:999px;background:rgba(20,14,8,.4);
-  border:1px solid var(--glass-brd);backdrop-filter:blur(6px);
-}
 
 /* ---------- scroll progress ---------- */
 #scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--bronze),var(--gold),var(--champagne));z-index:60;width:0%;transition:width .1s;}
@@ -168,7 +187,7 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
 
 /* ---------- gate / enter ---------- */
 #gate{position:fixed;inset:0;z-index:150;display:flex;align-items:center;justify-content:center;text-align:center;}
-#gate .bg-layer{animation:slowZoom 22s ease-in-out infinite alternate;}
+#gate .bg-layer{animation:slowZoom 22s ease-in-out infinite alternate;transition:transform .1s ease-out;will-change:transform;}
 @keyframes slowZoom{0%{transform:scale(1.04);}100%{transform:scale(1.16);}}
 #gate .fog-layer{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(ellipse at 50% 85%, rgba(245,239,226,.16) 0%, rgba(245,239,226,0) 55%),
@@ -179,35 +198,51 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
 @keyframes gateOut{to{opacity:0;visibility:hidden;transform:scale(1.08);}}
 #main-site{opacity:0;}
 #main-site.show{opacity:1;transition:opacity 1.4s ease;}
-#enter-btn{animation:enterGlow 3s ease-in-out infinite;}
+#enter-btn{animation:enterGlow 3s ease-in-out infinite;transform:scale(1);transition:transform .35s ease,letter-spacing .4s,color .4s,border-color .4s;}
+#enter-btn:hover{transform:scale(1.05);}
+#enter-btn:active{transform:scale(.98);}
 @keyframes enterGlow{0%,100%{box-shadow:0 0 0 0 rgba(217,184,119,.0), 0 0 18px 2px rgba(217,184,119,.25);}50%{box-shadow:0 0 0 8px rgba(217,184,119,.06), 0 0 28px 6px rgba(217,184,119,.5);}}
+.gate-monogram{position:relative;animation:monogramPulse 4s ease-in-out infinite;transition:transform .4s ease,filter .4s ease;}
+.gate-monogram:hover{transform:scale(1.08);filter:drop-shadow(0 0 20px rgba(217,184,119,.75));}
+@keyframes monogramPulse{0%,100%{filter:drop-shadow(0 0 8px rgba(217,184,119,.4));}50%{filter:drop-shadow(0 0 16px rgba(217,184,119,.7));}}
+
+/* ---------- reduced motion support ---------- */
+@media(prefers-reduced-motion:reduce){
+  #gate .bg-layer{animation:none;transform:scale(1.08);}
+  .gate-monogram{animation:none;}
+  #enter-btn{animation:none;box-shadow:0 0 18px 2px rgba(217,184,119,.25);}
+  .scroll-hint{animation:none;opacity:.85;}
+  .fog-layer{animation:none;}
+  .bell-deco{animation:none;}
+  .lotus-glow-icon{animation:none;}
+}
 
 /* ---------- couple cards ---------- */
 .couple-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:2.5rem;align-items:center;margin-top:3rem;}
 .couple-card{text-align:center;}
-.couple-card .name-script{font-family:var(--script);font-size:clamp(2.4rem,5vw,3.6rem);color:var(--champagne);}
-.couple-card .role{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin:.5rem 0 1rem;font-family:var(--display);}
-.couple-card .full-name{font-size:1.1rem;margin-bottom:.3rem;}
-.couple-card .parents{font-size:.95rem;color:rgba(245,239,226,.75);line-height:1.6;}
-.couple-mid{width:64px;height:64px;border:1px solid var(--glass-brd);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--champagne);animation:midGlow 3.6s ease-in-out infinite;}
+.couple-card .name-script{font-family:var(--script);font-size:clamp(2.6rem,5vw,3.8rem);color:var(--champagne);}
+.couple-card .role{font-size:clamp(.75rem,.9vw,.8rem);letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin:.5rem 0 1rem;font-family:var(--display);}
+.couple-card .full-name{font-size:clamp(1.1rem,1.4vw,1.2rem);margin-bottom:.3rem;}
+.couple-card .parents{font-size:clamp(1rem,1.2vw,1.05rem);color:rgba(245,239,226,.75);line-height:1.6;}
+.couple-mid{width:clamp(56px,8vw,64px);height:clamp(56px,8vw,64px);border:1px solid var(--glass-brd);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--champagne);animation:midGlow 3.6s ease-in-out infinite;}
 @keyframes midGlow{0%,100%{box-shadow:0 0 0 0 rgba(217,184,119,0);}50%{box-shadow:0 0 22px 6px rgba(217,184,119,.35);}}
 @media(max-width:760px){.couple-grid{grid-template-columns:1fr;}.couple-mid{margin:0 auto;}}
 .contact-block{margin-top:1rem;padding-top:.9rem;border-top:1px solid rgba(217,184,119,.22);}
-.contact-label{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-family:var(--display);display:block;margin-bottom:.35rem;}
-.contact-text{font-size:.88rem;color:rgba(245,239,226,.8);line-height:1.6;}
+.contact-label{font-size:clamp(.65rem,.8vw,.7rem);letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-family:var(--display);display:block;margin-bottom:.35rem;}
+.contact-text{font-size:clamp(.92rem,1.05vw,.98rem);color:rgba(245,239,226,.8);line-height:1.6;}
 
 /* ---------- story chapters ---------- */
 .chapters{display:flex;flex-direction:column;gap:5rem;margin-top:3rem;text-align:left;}
 .chapter{display:grid;grid-template-columns:70px 1fr;gap:1.6rem;align-items:start;position:relative;}
 .chapter::before{content:'';position:absolute;left:34px;top:70px;bottom:-5rem;width:1px;background:linear-gradient(180deg,var(--gold),transparent);}
 .chapter:last-child::before{display:none;}
-.chapter-num{width:68px;height:68px;border-radius:50%;border:1px solid var(--glass-brd);display:flex;align-items:center;justify-content:center;font-family:var(--display);color:var(--champagne);font-size:.95rem;background:rgba(20,14,8,.4);flex-shrink:0;transition:box-shadow .6s ease,border-color .6s ease,transform .6s ease;}
+.chapter-num{width:clamp(60px,8vw,68px);height:clamp(60px,8vw,68px);border-radius:50%;border:1px solid var(--glass-brd);display:flex;align-items:center;justify-content:center;font-family:var(--display);color:var(--champagne);font-size:clamp(.9rem,1.2vw,1.05rem);background:rgba(20,14,8,.4);flex-shrink:0;transition:box-shadow .6s ease,border-color .6s ease,transform .6s ease;}
 .chapter{transition:opacity .7s ease;}
 .chapter:not(.active){opacity:.5;}
 .chapter.active .chapter-num{box-shadow:0 0 22px 5px rgba(217,184,119,.5);border-color:var(--gold);transform:scale(1.06);}
-.chapter h3{font-size:clamp(1.3rem,2.6vw,1.8rem);margin-bottom:.5rem;color:var(--ivory);}
-.chapter .tag{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;display:block;}
-.chapter p{max-width:560px;}
+.chapter h3{font-size:clamp(1.35rem,2.5vw,1.85rem);margin-bottom:.5rem;color:var(--ivory);}
+.chapter .tag{font-size:clamp(.7rem,.85vw,.75rem);letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;display:block;}
+.chapter p{max-width:560px;font-size:clamp(1.05rem,1.4vw,1.15rem);}
 
 /* ---------- lotus reveal ---------- */
 .lotus-wrap{position:relative;width:min(360px,80vw);aspect-ratio:1/1;margin:2.5rem auto 0;cursor:pointer;}
@@ -217,7 +252,10 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
 .lotus-video.show{opacity:1;}
 .lotus-reveal-text{opacity:0;transition:opacity 1s ease .3s;margin-top:2rem;}
 .lotus-reveal-text.show{opacity:1;}
-.lotus-hint{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:1.2rem;opacity:.85;}
+.lotus-hint{font-size:clamp(.78rem,.95vw,.88rem);letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:1.2rem;opacity:.85;}
+.scroll-hint{font-size:clamp(.85rem,1.05vw,.95rem);letter-spacing:.26em;text-transform:uppercase;color:var(--champagne);opacity:.85;animation:scrollBounce 2.5s ease-in-out infinite;position:relative;filter:drop-shadow(0 2px 8px rgba(217,184,119,.4));}
+@keyframes scrollBounce{0%,100%{transform:translateY(0);opacity:.75;}50%{transform:translateY(8px);opacity:1;}}
+@keyframes scrollArrowBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(4px);}}
 .spark{position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;
   background:radial-gradient(circle,#f5e6b8 0%,#c9a24a 60%,transparent 100%);
   pointer-events:none;opacity:0;animation:sparkFly 1.1s cubic-bezier(.2,.7,.3,1) forwards;}
@@ -227,9 +265,9 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
 
 /* ---------- countdown ---------- */
 .countdown-grid{display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem;}
-.count-box{width:100px;padding:1.4rem .5rem;border:1px solid var(--glass-brd);border-radius:6px;background:rgba(20,14,8,.35);backdrop-filter:blur(4px);}
-.count-num{font-family:var(--display);font-size:clamp(2rem,4vw,2.6rem);color:var(--champagne);font-variant-numeric:tabular-nums;}
-.count-label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);margin-top:.3rem;}
+.count-box{width:clamp(85px,11vw,100px);padding:clamp(1.2rem,1.6vw,1.4rem) .5rem;border:1px solid var(--glass-brd);border-radius:6px;background:rgba(20,14,8,.35);backdrop-filter:blur(4px);}
+.count-num{font-family:var(--display);font-size:clamp(1.8rem,3.5vw,2.4rem);color:var(--champagne);font-variant-numeric:tabular-nums;}
+.count-label{font-size:clamp(.58rem,.75vw,.65rem);letter-spacing:.18em;text-transform:uppercase;color:var(--cream);margin-top:.3rem;}
 
 /* ---------- family cards ---------- */
 .family-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem;text-align:left;}
@@ -240,10 +278,10 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
 .family-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,.35);border-color:var(--gold);}
 .family-card.reveal.in{animation:familyGlow 1.8s ease-out;}
 @keyframes familyGlow{0%{box-shadow:0 0 0 0 rgba(201,162,74,0);}35%{box-shadow:0 0 34px 6px rgba(201,162,74,.35);}100%{box-shadow:0 0 0 0 rgba(201,162,74,0);}}
-.family-card .fam-eyebrow{font-size:.68rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;font-family:var(--display);}
-.family-card h3{font-size:clamp(1.4rem,2.6vw,1.9rem);margin:.5rem 0 1rem;}
-.fam-line{margin-top:.9rem;font-size:1.02rem;}
-.fam-role{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);opacity:.85;}
+.family-card .fam-eyebrow{font-size:clamp(.72rem,.9vw,.78rem);letter-spacing:.25em;color:var(--gold);text-transform:uppercase;font-family:var(--display);}
+.family-card h3{font-size:clamp(1.5rem,2.7vw,2rem);margin:.5rem 0 1rem;}
+.fam-line{margin-top:.9rem;font-size:clamp(1.05rem,1.3vw,1.15rem);}
+.fam-role{font-size:clamp(.72rem,.9vw,.78rem);letter-spacing:.15em;text-transform:uppercase;color:var(--gold);opacity:.85;}
 @media(max-width:760px){.family-grid{grid-template-columns:1fr;}}
 
 /* ---------- celebrations ---------- */
@@ -286,12 +324,12 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
 }
 .celeb-info{padding:1.8rem 2rem;display:flex;flex-direction:column;justify-content:center;gap:.35rem;}
 .celeb-info .fam-eyebrow{opacity:.8;}
-.celeb-info h3{font-size:clamp(1.3rem,2.4vw,1.7rem);margin:.2rem 0 .3rem;}
-.celeb-info .celeb-tagline{font-style:italic;color:var(--champagne);font-size:.95rem;margin-bottom:.4rem;}
+.celeb-info h3{font-size:clamp(1.4rem,2.5vw,1.8rem);margin:.2rem 0 .3rem;}
+.celeb-info .celeb-tagline{font-style:italic;color:var(--champagne);font-size:clamp(1rem,1.2vw,1.05rem);margin-bottom:.4rem;}
 .celeb-meta{display:flex;flex-wrap:wrap;gap:.5rem 1.3rem;margin-top:.4rem;}
-.celeb-meta-item{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:rgba(245,239,226,.8);}
+.celeb-meta-item{display:flex;align-items:center;gap:.5rem;font-size:clamp(.9rem,1.05vw,.95rem);color:rgba(245,239,226,.8);}
 .celeb-meta-item svg{width:16px;height:16px;color:var(--champagne);flex-shrink:0;}
-.celeb-attire{margin-top:.7rem;padding-top:.7rem;border-top:1px solid rgba(217,184,119,.22);font-size:.82rem;color:rgba(245,239,226,.75);}
+.celeb-attire{margin-top:.7rem;padding-top:.7rem;border-top:1px solid rgba(217,184,119,.22);font-size:clamp(.88rem,1.05vw,.92rem);color:rgba(245,239,226,.75);}
 .celeb-attire b{color:var(--champagne);font-family:var(--display);font-weight:500;letter-spacing:.03em;}
 @media(max-width:760px){
   .celeb-card{grid-template-columns:1fr;}
@@ -467,11 +505,41 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
 ::-webkit-scrollbar-track{background:var(--ink);}
 ::-webkit-scrollbar-thumb{background:var(--bronze);border-radius:4px;}
 
+/* ---------- accessibility ---------- */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+.skip-link{position:absolute;top:-40px;left:0;background:var(--gold);color:var(--ink);padding:8px 12px;z-index:9999;text-decoration:none;}
+.skip-link:focus{top:0;}
+
+/* ---------- hero mobile enhancements ---------- */
+@media(max-width:600px){
+  #gate .content{padding:0 5vw;}
+  #gate .eyebrow{font-size:.68rem;letter-spacing:.32em;margin-bottom:1rem;}
+  #gate .script-lg{font-size:2.6rem;margin:.8rem 0;}
+  #gate p{font-size:1.05rem;line-height:1.65;margin:.6rem 0;}
+  #gate .gate-monogram{margin:1.6rem 0;}
+  #gate .gate-monogram svg{width:56px;height:56px;}
+  .scroll-hint{font-size:.75rem;margin-top:.8rem;}
+}
+
+/* ---------- touch device optimizations ---------- */
+@media(hover:none){
+  .gate-monogram{animation:monogramPulse 3s ease-in-out infinite;}
+  #enter-btn{box-shadow:0 0 22px 3px rgba(217,184,119,.35);}
+  #enter-btn:active{transform:scale(.96);transition:transform .15s ease;}
+}
+
 @media(max-width:600px){
   .section{padding:7vh 6vw;}
-  .couple-grid{gap:1.2rem;}
-  .couple-card .name-script{font-size:2.2rem;}
-  .couple-card .role{margin:.3rem 0 .6rem;}
+  .couple-grid{gap:1.8rem;}
+  .couple-card .name-script{font-size:2.4rem;}
+  .eyebrow{font-size:.78rem;letter-spacing:.32em;}
+  .display-xl{font-size:2.4rem;}
+  .display-lg{font-size:1.9rem;}
+  .script-lg{font-size:3rem;}
+  p{font-size:1.05rem;line-height:1.65;}
+  .lede{font-size:1.15rem;}
+  .om{font-size:1.4rem;}
+}margin:.3rem 0 .6rem;}
   .couple-card .parents{font-size:.85rem;}
   .couple-mid{width:44px;height:44px;}
   .couple-mid svg{width:18px;height:18px;}
@@ -493,31 +561,33 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
 </div>
 
 <!-- GATE / ENTER -->
-<div id="gate">
-  <div class="bg-layer" style="background-image:url(assets/images/02_Hero_Landscape.jpg);"></div>
-  <div class="fog-layer"></div>
-  <div class="bg-fade dark"></div>
+<div id="gate" role="main" aria-label="Wedding invitation entrance">
+  <div class="bg-layer" style="background-image:url(assets/images/02_Hero_Landscape.jpg);" role="img" aria-label="Romantic temple landscape background"></div>
+  <div class="fog-layer" aria-hidden="true"></div>
+  <div class="bg-fade dark" aria-hidden="true"></div>
   <div class="content" style="max-width:640px;">
-    <span class="eyebrow reveal in">A Sacred Celebration</span>
-    <h1 class="display-lg reveal in reveal-delay-1">Two Souls,<br>One Eternal Journey</h1>
-    <div class="script script-lg reveal in reveal-delay-2" style="margin:1rem 0;">Naadham &amp; Rishi</div>
-    <p class="reveal in reveal-delay-2">Join us as we begin our forever</p>
-    <div style="margin:2.4rem 0;display:flex;justify-content:center;" class="reveal in reveal-delay-3">
-      <svg width="70" height="70" viewBox="0 0 64 64" fill="none" stroke="#d9b877" stroke-width="1">
-        <circle cx="32" cy="32" r="30"/>
-        <text x="32" y="40" text-anchor="middle" font-family="Cinzel" font-size="20" fill="#d9b877" stroke="none">NR</text>
-      </svg>
+    <div class="script script-lg reveal in" style="margin:0 0 .8rem;font-size:clamp(3.2rem,8vw,6.5rem);" role="text" aria-label="Names of the couple">Naadham &amp; Rishi</div>
+    <span class="eyebrow reveal in reveal-delay-1" role="text" style="font-size:.88rem;letter-spacing:.35em;opacity:1;">Are Getting Married</span>
+    <div class="gate-monogram" style="margin:2.2rem 0 2rem;display:flex;justify-content:center;" role="img" aria-label="Monogram with initials N R">
+      <div class="reveal in reveal-delay-2">
+        <svg width="70" height="70" viewBox="0 0 64 64" fill="none" stroke="#d9b877" stroke-width="1" aria-hidden="true">
+          <circle cx="32" cy="32" r="30"/>
+          <text x="32" y="40" text-anchor="middle" font-family="Cinzel" font-size="20" fill="#d9b877" stroke="none">NR</text>
+        </svg>
+      </div>
     </div>
-    <button id="enter-btn" class="btn reveal in reveal-delay-3">Begin Our Journey</button>
-    <div class="lotus-hint reveal in reveal-delay-4">Scroll to Begin</div>
+    <p class="lede reveal in reveal-delay-2" style="font-size:clamp(1.12rem,2vw,1.38rem);margin-top:.5rem;margin-bottom:2.2rem;font-weight:400;">Join us as we begin our forever</p>
+    <button id="enter-btn" class="btn reveal in reveal-delay-3" aria-label="Enter wedding website" style="font-size:.85rem;padding:1.15rem 2.8rem;">
+      Begin Our Journey
+    </button>
+    <div class="scroll-hint reveal in reveal-delay-4" role="status" aria-live="polite" style="margin-top:2rem;">Tap to Begin</div>
   </div>
 </div>
 
-<div id="nav-brand">NAADHAM ♡ RISHI</div>
 <button id="music-toggle" aria-label="Toggle music">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
 </button>
-<audio id="bg-audio" loop preload="none" src="assets/ambient.mp3"></audio>
+<audio id="bg-audio" loop preload="auto" src="vidssave.com Mahadev theme music LOW.mp4"></audio>
 
 <div id="main-site">
 
@@ -529,11 +599,16 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
   <img class="bell-deco right" src="BELL_SVG" alt="">
   <div class="content">
     <span class="om reveal">ॐ</span>
-    <span class="eyebrow reveal reveal-delay-1">Every Soul Has A Journey</span>
-    <h1 class="display-xl reveal reveal-delay-2">Some journeys are<br>written before <span class="script" style="font-size:1.05em;">time</span> itself</h1>
-    <p class="reveal reveal-delay-3" style="max-width:560px;margin:1.6rem auto 0;">Guided by divine timing, blessed by destiny — two souls were always meant to become one.</p>
+    <span class="eyebrow reveal reveal-delay-1" style="font-size:clamp(.75rem,1vw,.95rem);">Every Soul Has A Journey</span>
+    <!-- <h1 class="display-xl reveal reveal-delay-2">Some journeys are written before <span class="script" style="font-size:1.05em;">time</span> itself</h1> -->
+    <h1 class="display-xl reveal reveal-delay-2">
+      <span class="script" style="font-size:clamp(3.2rem,9vw,7rem);color:var(--champagne);text-shadow:0 0 40px rgba(217,184,119,.6),0 4px 12px rgba(0,0,0,.4);">Naadham</span>
+      <span style="font-size:clamp(1.8rem,5vw,4rem);margin:0 0.3em;color:var(--gold);">&amp;</span>
+      <span class="script" style="font-size:clamp(3.2rem,9vw,7rem);color:var(--champagne);text-shadow:0 0 40px rgba(217,184,119,.6),0 4px 12px rgba(0,0,0,.4);">Rishi</span>
+    </h1>
+    <p class="reveal reveal-delay-3" style="max-width:560px;margin:1.6rem auto 0;font-size:clamp(1.05rem,1.5vw,1.3rem);">Guided by divine timing, blessed by destiny — two souls were always meant to become one.</p>
     <div class="divider reveal reveal-delay-4"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2 4-2 5-2 8a2 2 0 104 0c0-3-4-4-2-8z"/></svg></div>
-    <div class="lotus-hint reveal reveal-delay-4">Scroll to Awaken the Story</div>
+    <div class="lotus-hint reveal reveal-delay-4" style="font-size:clamp(.78rem,1vw,.92rem);">Scroll to Awaken the Story</div>
   </div>
 </section>
 
@@ -784,16 +859,7 @@ p{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:400;line-height:1.85;color:rgb
     <h2 class="display-lg reveal reveal-delay-1">Every Sacred Beginning Has Its <span class="script">Chosen</span> Moment</h2>
     <p class="reveal reveal-delay-2" style="margin-top:1rem;">Some moments are not decided by time. Time is chosen for them.<br>Touch the sacred lotus to reveal our divine hour.</p>
     <div class="lotus-wrap" id="lotus-wrap">
-      <svg class="lotus-svg" id="lotus-svg" viewBox="0 0 200 200" fill="none">
-        <g id="lotus-petals" stroke="#d9b877" stroke-width="1" fill="rgba(217,184,119,0.08)">
-          <path d="M100 170 C60 150 40 110 100 40 C160 110 140 150 100 170Z"/>
-          <path d="M100 170 C50 145 20 95 70 30 C90 70 95 130 100 170Z" opacity=".8"/>
-          <path d="M100 170 C150 145 180 95 130 30 C110 70 105 130 100 170Z" opacity=".8"/>
-          <path d="M100 170 C45 130 25 70 55 20 C85 55 95 120 100 170Z" opacity=".6"/>
-          <path d="M100 170 C155 130 175 70 145 20 C115 55 105 120 100 170Z" opacity=".6"/>
-        </g>
-        <circle cx="100" cy="120" r="6" fill="#d9b877"/>
-      </svg>
+      <img class="lotus-image" id="lotus-image" src="assets/images/lotus-reveal.png" alt="Sacred Lotus" style="width:100%;height:100%;object-fit:contain;border-radius:50%;">
       <video class="lotus-video" id="lotus-video" muted playsinline src="assets/video/lotus-reveal.mp4"></video>
     </div>
     <div class="lotus-reveal-text" id="lotus-text">
@@ -1015,14 +1081,46 @@ function initLoader(){
 /* ================= GATE / ENTER ================= */
 const gate = document.getElementById('gate');
 const mainSite = document.getElementById('main-site');
+const gateBgLayer = gate.querySelector('.bg-layer');
+
+// Parallax effect on mouse move for hero background
+gate.addEventListener('mousemove', (e) => {
+  if (gate.classList.contains('hide')) return;
+  const x = (e.clientX / window.innerWidth - 0.5) * 20;
+  const y = (e.clientY / window.innerHeight - 0.5) * 20;
+  gateBgLayer.style.transform = `scale(1.12) translate(${x}px, ${y}px)`;
+});
+
 function openGate(){
   gate.classList.add('hide');
   mainSite.classList.add('show');
   document.body.style.overflow = 'auto';
   tryPlayAudio();
   setTimeout(() => { gate.style.display = 'none'; }, 1400);
+  // Announce to screen readers
+  setTimeout(() => {
+    const announcement = document.createElement('div');
+    announcement.setAttribute('role', 'status');
+    announcement.setAttribute('aria-live', 'polite');
+    announcement.className = 'sr-only';
+    announcement.textContent = 'Website content loaded';
+    document.body.appendChild(announcement);
+    setTimeout(() => announcement.remove(), 2000);
+  }, 1500);
 }
+
 document.getElementById('enter-btn').addEventListener('click', openGate);
+
+// Keyboard navigation - Enter or Space to open gate
+document.addEventListener('keydown', (e) => {
+  if (!gate.classList.contains('hide') && (e.key === 'Enter' || e.key === ' ')) {
+    if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'INPUT') {
+      e.preventDefault();
+      openGate();
+    }
+  }
+});
+
 document.body.style.overflow = 'hidden';
 let gateScrollArmed = false;
 window.addEventListener('wheel', () => {
@@ -1252,7 +1350,7 @@ updateParallax();
 
 /* ================= LOTUS REVEAL ================= */
 const lotusWrap = document.getElementById('lotus-wrap');
-const lotusSvg = document.getElementById('lotus-svg');
+const lotusImage = document.getElementById('lotus-image');
 const lotusVideoEl = document.getElementById('lotus-video');
 const lotusText = document.getElementById('lotus-text');
 const sacredContinueBtn = document.getElementById('sacred-continue');
@@ -1279,7 +1377,7 @@ lotusWrap.addEventListener('click', () => {
   setTimeout(() => {
     lotusVideoEl.classList.add('show');
     lotusVideoEl.play().catch(()=>{});
-    lotusSvg.style.opacity = '0';
+    lotusImage.style.opacity = '0';
   }, 250);
   setTimeout(() => lotusText.classList.add('show'), 700);
   setTimeout(() => sacredContinueBtn.classList.add('show'), 900);
