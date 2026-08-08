@@ -1519,16 +1519,8 @@ updateParallax();
     modal.classList.add('show');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    /* Pause the background theme music so it doesn't clash with this video's own sound */
-    if (typeof audioPlaying !== 'undefined' && audioPlaying) {
-      musicWasPlayingBeforeModal = true;
-      audioEl.pause();
-      audioPlaying = false;
-      musicBtn.classList.remove('playing');
-    } else {
-      musicWasPlayingBeforeModal = false;
-    }
-    modalVideo.muted = false;
+    /* Keep background music playing - don't pause it */
+    modalVideo.muted = true; // Keep video muted so background music continues
     const p = modalVideo.play();
     if (p && p.catch) p.catch(() => { modalVideo.muted = true; modalVideo.play().catch(()=>{}); });
   }
@@ -1540,8 +1532,7 @@ updateParallax();
     modalVideo.load();
     document.body.style.overflow = '';
     window.scrollTo({ top: lastScrollY, behavior: 'auto' });
-    /* Resume the background theme music if it was playing before */
-    if (musicWasPlayingBeforeModal) tryPlayAudio();
+    /* No need to resume music since it never stopped */
   }
   document.querySelectorAll('[data-open-modal]').forEach(btn => {
     btn.addEventListener('click', (e) => { e.stopPropagation(); openModal(btn); });
