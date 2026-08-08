@@ -1611,6 +1611,8 @@ lotusWrap.addEventListener('click', () => {
   lotusOpened = true;
   lotusWrap.style.filter = 'drop-shadow(0 0 24px rgba(217,184,119,.85))';
   lotusTapHint.style.opacity = '0';
+  lotusTapHint.style.visibility = 'hidden';
+  lotusTapHint.style.pointerEvents = 'none';
   burstGoldParticles(lotusWrap);
   setTimeout(() => {
     lotusVideoEl.classList.add('show');
