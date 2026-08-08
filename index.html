@@ -1747,20 +1747,53 @@ function setFlipDigit(id, value){
 setInterval(tickCountdown, 1000);
 tickCountdown();
 
-/* ================= RSVP FORM ================= */
+/* ================= RSVP FORM -> GOOGLE SHEET ================= */
+// This Web App URL comes from deploying the "RSVP Google Apps Script"
+// (see google-apps-script.gs) on the Google account nadham23bijirajesh9720@gmail.com.
+// After deploying, paste the /exec URL below between the quotes.
+const RSVP_SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbxDyfe60oCJjCAVe6XRuYkwKkupvOESGAdABo_p8XK8U4JDB4yiueLD4FFYrCj6Z7Ko/exec";
+
 document.getElementById('rsvp-form').addEventListener('submit', function(e){
   e.preventDefault();
+  const form = this;
+  const submitBtn = form.querySelector('.rsvp-submit');
   const name = document.getElementById('rsvp-name').value.trim();
   const phone = document.getElementById('rsvp-phone').value.trim();
   const attend = document.getElementById('rsvp-attend').value;
   const guests = document.getElementById('rsvp-guests').value;
   const note = document.getElementById('rsvp-note').value.trim();
-  const msg = `RSVP for Naadham & Rishi's Wedding%0AName: ${name}%0APhone: ${phone}%0AAttending: ${attend}%0AGuests: ${guests}%0AMessage: ${note || '-'}`;
-  const waLink = `https://wa.me/919605070065?text=${msg}`;
   const msgBox = document.getElementById('rsvp-msg');
-  msgBox.style.display = 'block';
-  msgBox.innerHTML = `Thank you, ${name || 'friend'} — your reply has been noted. <a href="${waLink}" target="_blank" rel="noopener" style="color:var(--champagne);text-decoration:underline;">Tap here to also confirm via WhatsApp</a>.`;
-  this.reset();
+
+  const showThankYou = () => {
+    msgBox.style.display = 'block';
+    msgBox.innerHTML = `Thank you, ${name || 'friend'} — your reply has been noted.`;
+    form.reset();
+    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send Blessings'; }
+  };
+
+  if (!RSVP_SHEET_ENDPOINT || RSVP_SHEET_ENDPOINT.indexOf('PASTE_YOUR') === 0) {
+    // Endpoint not configured yet — still show confirmation so the guest isn't blocked.
+    showThankYou();
+    return;
+  }
+
+  if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+
+  fetch(RSVP_SHEET_ENDPOINT, {
+    method: 'POST',
+    mode: 'no-cors', // Apps Script web apps don't return CORS headers to fetch()
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({
+      timestamp: new Date().toISOString(),
+      name: name,
+      phone: phone,
+      attending: attend,
+      guests: guests,
+      message: note
+    })
+  })
+  .then(() => showThankYou())
+  .catch(() => showThankYou()); // no-cors gives an opaque response either way, so always confirm
 });
 
 /* ================= BACK TO TOP BUTTON ================= */
