@@ -258,8 +258,10 @@ p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.7;color:r
 
 /* ---------- lotus reveal ---------- */
 .lotus-wrap{position:relative;width:min(480px,85vw);aspect-ratio:1/1;margin:2.5rem auto 0;cursor:pointer;}
-.lotus-image{width:100%;height:100%;object-fit:contain;border-radius:50%;transition:opacity .8s ease,transform .6s cubic-bezier(.34,1.56,.64,1);}
-.lotus-wrap:hover .lotus-image{transform:scale(1.04);}
+.lotus-image{width:100%;height:100%;object-fit:contain;border-radius:50%;transition:opacity .8s ease,transform .6s cubic-bezier(.34,1.56,.64,1);filter:drop-shadow(0 0 20px rgba(217,184,119,.4));}
+.lotus-wrap:hover .lotus-image{transform:scale(1.04);filter:drop-shadow(0 0 30px rgba(217,184,119,.7));}
+.lotus-wrap{animation:lotusAttention 4s ease-in-out 3s infinite;}
+@keyframes lotusAttention{0%,95%,100%{transform:scale(1);}97.5%{transform:scale(1.02);}}
 .lotus-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;opacity:0;transition:opacity .8s ease;pointer-events:none;}
 .lotus-video.show{opacity:1;}
 .lotus-reveal-text{opacity:0;transition:opacity 1s ease .3s;margin-top:2.5rem;text-align:center;}
@@ -268,10 +270,12 @@ p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.7;color:r
 .lotus-reveal-text h2{margin-bottom:.6rem;}
 .lotus-reveal-text p{margin-top:.5rem;}
 .lotus-hint{font-size:clamp(.78rem,.95vw,.88rem);letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:1.2rem;opacity:.85;}
-.lotus-tap-hint{position:absolute;bottom:-3rem;left:50%;transform:translateX(-50%);font-size:clamp(.75rem,.9vw,.85rem);letter-spacing:.24em;text-transform:uppercase;color:var(--champagne);opacity:.85;animation:tapPulse 2s ease-in-out infinite;display:flex;align-items:center;gap:.5rem;pointer-events:none;}
-.lotus-tap-hint svg{width:18px;height:18px;animation:tapBounce 2s ease-in-out infinite;}
-@keyframes tapPulse{0%,100%{opacity:.75;}50%{opacity:1;}}
-@keyframes tapBounce{0%,100%{transform:scale(1);}50%{transform:scale(1.1);}}
+.lotus-tap-hint{position:absolute;bottom:-3rem;left:50%;transform:translateX(-50%);font-size:clamp(.85rem,1vw,.95rem);letter-spacing:.28em;text-transform:uppercase;color:var(--champagne);opacity:.9;animation:tapPulse 2s ease-in-out infinite;display:flex;align-items:center;gap:.7rem;pointer-events:none;background:rgba(20,14,8,.4);padding:.6rem 1.2rem;border-radius:20px;border:1px solid rgba(217,184,119,.4);backdrop-filter:blur(4px);}
+.lotus-tap-hint svg{width:20px;height:20px;animation:tapBounce 2s ease-in-out infinite;}
+.lotus-tap-hint::before{content:'';position:absolute;inset:-2px;border-radius:22px;background:linear-gradient(45deg,var(--champagne),var(--gold),var(--champagne));opacity:.3;z-index:-1;animation:borderGlow 3s ease-in-out infinite;}
+@keyframes tapPulse{0%,100%{opacity:.8;transform:translateX(-50%) scale(1);}50%{opacity:1;transform:translateX(-50%) scale(1.05);}}
+@keyframes tapBounce{0%,100%{transform:scale(1) rotate(0deg);}50%{transform:scale(1.2) rotate(-5deg);}}
+@keyframes borderGlow{0%,100%{opacity:.3;}50%{opacity:.7;}}
 .scroll-hint{font-size:clamp(.85rem,1.05vw,.95rem);letter-spacing:.26em;text-transform:uppercase;color:var(--champagne);opacity:.85;animation:scrollBounce 2.5s ease-in-out infinite;position:relative;filter:drop-shadow(0 2px 8px rgba(217,184,119,.4));}
 @keyframes scrollBounce{0%,100%{transform:translateY(0);opacity:.75;}50%{transform:translateY(8px);opacity:1;}}
 @keyframes scrollArrowBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(4px);}}
@@ -975,7 +979,8 @@ body.celeb-manual-mode .celeb-full:not(.video-playing) .celeb-tap-play{display:f
       <video class="lotus-video" id="lotus-video" muted playsinline src="assets/video/lotus-reveal.mp4"></video>
       <div class="lotus-tap-hint" id="lotus-tap-hint">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 5v14M12 19l-4-4M12 19l4-4"/>
+          <path d="M9 12l2 2 4-4"/>
+          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
         </svg>
         <span>Tap to Reveal</span>
       </div>
