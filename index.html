@@ -171,7 +171,7 @@ p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.7;color:r
 
 /* ---------- music toggle ---------- */
 #music-toggle{
-  position:fixed;bottom:24px;right:24px;z-index:50;
+  position:fixed;bottom:24px;left:24px;z-index:50;
   width:46px;height:46px;border-radius:50%;
   border:1px solid var(--glass-brd);background:rgba(20,14,8,.45);backdrop-filter:blur(6px);
   display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--champagne);
@@ -323,10 +323,10 @@ p{font-size:clamp(1.05rem,1.5vw,1.25rem);font-weight:400;line-height:1.7;color:r
   transform:translateZ(0);
 }
 .celeb-media .celeb-poster{background-size:cover;background-position:center;}
-.celeb-media::after{
+/* .celeb-media::after{
   content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(20,14,8,0) 55%,rgba(20,14,8,.65) 100%);
-}
+} */
 /* Play button removed for cleaner look */
 .celeb-video-badge{position:absolute;bottom:12px;right:12px;z-index:2;background:rgba(20,14,8,.7);backdrop-filter:blur(4px);padding:.35rem .7rem;border-radius:4px;font-size:.7rem;letter-spacing:.05em;color:var(--champagne);pointer-events:none;}
 @media(hover:hover){
@@ -563,7 +563,7 @@ body.celeb-manual-mode .celeb-full:not(.video-playing) .celeb-tap-play{display:f
 .skip-link:focus{top:0;}
 
 /* ---------- back to top button ---------- */
-#back-to-top{position:fixed;bottom:90px;right:24px;z-index:50;width:46px;height:46px;border-radius:50%;border:1px solid var(--glass-brd);background:rgba(20,14,8,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--champagne);opacity:0;visibility:hidden;transform:translateY(20px);transition:opacity .3s,visibility .3s,transform .3s,box-shadow .3s;}
+#back-to-top{position:fixed;bottom:90px;left:24px;z-index:50;width:46px;height:46px;border-radius:50%;border:1px solid var(--glass-brd);background:rgba(20,14,8,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--champagne);opacity:0;visibility:hidden;transform:translateY(20px);transition:opacity .3s,visibility .3s,transform .3s,box-shadow .3s;}
 #back-to-top.show{opacity:1;visibility:visible;transform:translateY(0);}
 #back-to-top:hover{box-shadow:0 0 20px rgba(217,184,119,.5);transform:translateY(-4px);}
 #back-to-top svg{width:20px;height:20px;}
